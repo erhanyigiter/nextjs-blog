@@ -69,6 +69,31 @@ app.post('/api/auth/login', (req, res) => {
   });
 });
 
+// Post routes (simplified)
+app.get('/api/posts', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Posts endpoint ready',
+    data: { message: 'Post management system will be implemented' }
+  });
+});
+
+app.get('/api/posts/:slug', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Post detail endpoint ready',
+    data: { message: 'Post detail system will be implemented', slug: req.params.slug }
+  });
+});
+
+app.post('/api/posts', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Create post endpoint ready',
+    data: { message: 'Post creation system will be implemented' }
+  });
+});
+
 // Error handling middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   console.error(err.stack);
