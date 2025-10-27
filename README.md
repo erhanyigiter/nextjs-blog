@@ -16,12 +16,13 @@ Modern, ölçeklenebilir ve SEO dostu bir blog platformu. PostgreSQL veritabanı
 - **Sharp** - Resim optimizasyonu
 
 ### Frontend
-- **Next.js 15** - React framework (App Router)
+- **Next.js 15** - React framework (App Router) + **Turbo** - Ultra-fast bundling
 - **TypeScript** - Tip güvenliği
 - **Tailwind CSS** - Styling
 - **Framer Motion** - Animasyonlar
 - **React Hook Form** - Form yönetimi
 - **Zustand** - State management
+- **Turbo** - Lightning-fast build system
 
 ### DevOps & Tools
 - **Docker** - Containerization
@@ -265,13 +266,23 @@ npx prisma generate
 cd backend
 npm run dev
 
-# Frontend (Port 3000)
+# Frontend (Port 3000) - Next.js 15 + Turbo
 cd frontend
 npm run dev
 
-# Admin (Port 3001)
+# Admin (Port 3001) - Next.js 15 + Turbo
 cd admin
 npm run dev
+```
+
+### Turbo Optimizasyonları
+```bash
+# Frontend'de Turbo ile geliştirme
+cd frontend
+npm run dev --turbo
+
+# Production build (Turbo ile)
+npm run build --turbo
 ```
 
 ## 📝 API Endpoints
@@ -314,12 +325,14 @@ npm run dev
 - Body: Inter, sans-serif
 - Code: JetBrains Mono, monospace
 
-## 📊 Performance Hedefleri
+## 📊 Performance Hedefleri (Next.js 15 + Turbo)
 
-- **Lighthouse Score**: 90+
-- **First Contentful Paint**: < 1.5s
-- **Largest Contentful Paint**: < 2.5s
-- **Cumulative Layout Shift**: < 0.1
+- **Lighthouse Score**: 95+
+- **First Contentful Paint**: < 1.0s
+- **Largest Contentful Paint**: < 1.5s
+- **Cumulative Layout Shift**: < 0.05
+- **Build Time**: < 30s (Turbo ile)
+- **Hot Reload**: < 100ms
 
 ## 🔒 Güvenlik
 
