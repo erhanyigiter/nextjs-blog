@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
@@ -29,6 +30,12 @@ enum SettingType {
   JSON
 }
 
+enum PageStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
 model User {
   id            String   @id @default(uuid())
   email         String   @unique
@@ -46,6 +53,7 @@ model User {
   // Relations
   posts Post[]
   media Media[]
+  staticPages StaticPage[]
 
   @@map("users")
 }
@@ -166,4 +174,25 @@ model Setting {
   updatedAt   DateTime    @updatedAt
 
   @@map("settings")
+}
+
+model StaticPage {
+  id          String     @id @default(uuid())
+  title       String
+  slug        String     @unique
+  content     String
+  excerpt     String?
+  metaTitle   String?
+  metaDescription String?
+  status      PageStatus @default(DRAFT)
+  publishedAt DateTime?
+  viewCount   Int        @default(0)
+  authorId    String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relations
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@map("static_pages")
 }

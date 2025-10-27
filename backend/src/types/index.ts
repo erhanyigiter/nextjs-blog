@@ -115,6 +115,21 @@ export interface UpdateSettingRequest {
   description?: string;
 }
 
+// Static Pages types
+export interface CreateStaticPageRequest {
+  title: string;
+  slug?: string;
+  content: string;
+  excerpt?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  status?: 'DRAFT' | 'PUBLISHED' | 'ARCHIVED';
+}
+
+export interface UpdateStaticPageRequest extends Partial<CreateStaticPageRequest> {
+  id: string;
+}
+
 // Query types
 export interface PaginationQuery {
   page?: string;
@@ -134,4 +149,10 @@ export interface PostQuery extends PaginationQuery {
 export interface CommentQuery extends PaginationQuery {
   postId?: string;
   approved?: string;
+}
+
+export interface StaticPageQuery extends PaginationQuery {
+  status?: string;
+  search?: string;
+  author?: string;
 }
