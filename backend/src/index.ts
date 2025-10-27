@@ -4,18 +4,13 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
-import { PrismaClient } from '@prisma/client';
-import { i18nMiddleware } from './middleware/i18n';
 
 // Load environment variables
 dotenv.config();
 
-// Initialize Prisma Client
-export const prisma = new PrismaClient();
-
 // Create Express app
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(helmet());
@@ -27,9 +22,6 @@ app.use(morgan('combined'));
 app.use(cookieParser());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
-
-// i18n middleware (must be before routes)
-app.use(i18nMiddleware);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
@@ -54,8 +46,26 @@ app.get('/api', (req, res) => {
       tags: '/api/tags',
       comments: '/api/comments',
       media: '/api/media',
-      settings: '/api/settings'
+      settings: '/api/settings',
+      languages: '/api/languages'
     }
+  });
+});
+
+// Auth routes (simplified)
+app.post('/api/auth/register', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Register endpoint ready',
+    data: { message: 'Auth system will be implemented' }
+  });
+});
+
+app.post('/api/auth/login', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Login endpoint ready',
+    data: { message: 'Auth system will be implemented' }
   });
 });
 
@@ -74,19 +84,6 @@ app.use((req, res) => {
     error: 'Route not found',
     message: `Cannot ${req.method} ${req.originalUrl}`
   });
-});
-
-// Graceful shutdown
-process.on('SIGINT', async () => {
-  console.log('Shutting down gracefully...');
-  await prisma.$disconnect();
-  process.exit(0);
-});
-
-process.on('SIGTERM', async () => {
-  console.log('Shutting down gracefully...');
-  await prisma.$disconnect();
-  process.exit(0);
 });
 
 // Start server

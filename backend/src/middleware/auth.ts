@@ -4,7 +4,7 @@ import { prisma } from '../index';
 import { AuthenticatedRequest } from '../types';
 
 // JWT Secret
-const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key';
+const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-this-in-production';
 
 // Auth middleware to verify JWT token
 export const authenticateToken = async (
