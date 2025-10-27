@@ -36,6 +36,34 @@ enum PageStatus {
   ARCHIVED
 }
 
+enum LanguageCode {
+  TR
+  EN
+  DE
+  FR
+  ES
+  AR
+}
+
+model Language {
+  id        String       @id @default(uuid())
+  code      LanguageCode @unique
+  name      String       @unique
+  nativeName String
+  isActive  Boolean      @default(true)
+  isDefault Boolean      @default(false)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  // Relations
+  posts PostTranslation[]
+  categories CategoryTranslation[]
+  tags TagTranslation[]
+  staticPages StaticPageTranslation[]
+
+  @@map("languages")
+}
+
 model User {
   id            String   @id @default(uuid())
   email         String   @unique
@@ -60,9 +88,7 @@ model User {
 
 model Category {
   id          String   @id @default(uuid())
-  name        String   @unique
   slug        String   @unique
-  description String?
   color       String?
   icon        String?
   isActive    Boolean  @default(true)
@@ -71,13 +97,30 @@ model Category {
 
   // Relations
   posts Post[]
+  translations CategoryTranslation[]
 
   @@map("categories")
 }
 
+model CategoryTranslation {
+  id         String   @id @default(uuid())
+  categoryId String
+  languageId String
+  name       String
+  description String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  language Language @relation(fields: [languageId], references: [id], onDelete: Cascade)
+
+  @@unique([categoryId, languageId])
+  @@map("category_translations")
+}
+
 model Tag {
   id        String   @id @default(uuid())
-  name      String   @unique
   slug      String   @unique
   color     String?
   createdAt DateTime @default(now())
@@ -85,16 +128,30 @@ model Tag {
 
   // Relations
   posts PostTag[]
+  translations TagTranslation[]
 
   @@map("tags")
 }
 
+model TagTranslation {
+  id        String   @id @default(uuid())
+  tagId     String
+  languageId String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  tag      Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  language Language @relation(fields: [languageId], references: [id], onDelete: Cascade)
+
+  @@unique([tagId, languageId])
+  @@map("tag_translations")
+}
+
 model Post {
   id            String     @id @default(uuid())
-  title         String
   slug          String     @unique
-  excerpt       String?
-  content       String
   featuredImage String?
   status        PostStatus @default(DRAFT)
   publishedAt   DateTime?
@@ -111,8 +168,27 @@ model Post {
   category  Category  @relation(fields: [categoryId], references: [id], onDelete: Restrict)
   comments  Comment[]
   tags      PostTag[]
+  translations PostTranslation[]
 
   @@map("posts")
+}
+
+model PostTranslation {
+  id        String   @id @default(uuid())
+  postId    String
+  languageId String
+  title     String
+  content   String
+  excerpt   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  post     Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  language Language @relation(fields: [languageId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, languageId])
+  @@map("post_translations")
 }
 
 model Comment {
@@ -178,12 +254,7 @@ model Setting {
 
 model StaticPage {
   id          String     @id @default(uuid())
-  title       String
   slug        String     @unique
-  content     String
-  excerpt     String?
-  metaTitle   String?
-  metaDescription String?
   status      PageStatus @default(DRAFT)
   publishedAt DateTime?
   viewCount   Int        @default(0)
@@ -193,6 +264,27 @@ model StaticPage {
 
   // Relations
   author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  translations StaticPageTranslation[]
 
   @@map("static_pages")
+}
+
+model StaticPageTranslation {
+  id              String   @id @default(uuid())
+  staticPageId    String
+  languageId      String
+  title           String
+  content         String
+  excerpt         String?
+  metaTitle       String?
+  metaDescription String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  staticPage StaticPage @relation(fields: [staticPageId], references: [id], onDelete: Cascade)
+  language   Language   @relation(fields: [languageId], references: [id], onDelete: Cascade)
+
+  @@unique([staticPageId, languageId])
+  @@map("static_page_translations")
 }

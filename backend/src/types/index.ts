@@ -1,9 +1,14 @@
 import { Request } from 'express';
 import { User } from '@prisma/client';
 
+// Supported languages
+export type SupportedLanguage = 'tr' | 'en' | 'de' | 'fr' | 'es' | 'ar';
+
 // Extend Express Request interface
 export interface AuthenticatedRequest extends Request {
   user?: User;
+  language?: SupportedLanguage;
+  languageCode?: string;
 }
 
 // API Response types
@@ -128,6 +133,41 @@ export interface CreateStaticPageRequest {
 
 export interface UpdateStaticPageRequest extends Partial<CreateStaticPageRequest> {
   id: string;
+}
+
+// Language types
+export interface CreateLanguageRequest {
+  code: 'TR' | 'EN' | 'DE' | 'FR' | 'ES' | 'AR';
+  name: string;
+  nativeName: string;
+  isDefault?: boolean;
+}
+
+export interface UpdateLanguageRequest {
+  id: string;
+  name?: string;
+  nativeName?: string;
+  isActive?: boolean;
+  isDefault?: boolean;
+}
+
+// Translation types
+export interface CreateTranslationRequest {
+  languageId: string;
+  title?: string;
+  content?: string;
+  excerpt?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+}
+
+export interface UpdateTranslationRequest {
+  id: string;
+  title?: string;
+  content?: string;
+  excerpt?: string;
+  metaTitle?: string;
+  metaDescription?: string;
 }
 
 // Query types

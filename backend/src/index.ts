@@ -3,7 +3,9 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 import { PrismaClient } from '@prisma/client';
+import { i18nMiddleware } from './middleware/i18n';
 
 // Load environment variables
 dotenv.config();
@@ -22,8 +24,12 @@ app.use(cors({
   credentials: true
 }));
 app.use(morgan('combined'));
+app.use(cookieParser());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
+
+// i18n middleware (must be before routes)
+app.use(i18nMiddleware);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
