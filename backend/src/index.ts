@@ -152,6 +152,63 @@ app.post('/api/tags', (req, res) => {
   });
 });
 
+// Static Pages routes (simplified)
+app.get('/api/static-pages', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Static pages endpoint ready',
+    data: { message: 'Static pages management system will be implemented' }
+  });
+});
+
+app.get('/api/static-pages/:slug', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Static page detail endpoint ready',
+    data: { message: 'Static page detail system will be implemented', slug: req.params.slug }
+  });
+});
+
+app.get('/api/static-pages/admin/all', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Admin static pages endpoint ready',
+    data: { message: 'Admin static pages system will be implemented' }
+  });
+});
+
+app.get('/api/static-pages/admin/:id', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Admin static page detail endpoint ready',
+    data: { message: 'Admin static page detail system will be implemented', id: req.params.id }
+  });
+});
+
+app.post('/api/static-pages', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Create static page endpoint ready',
+    data: { message: 'Static page creation system will be implemented' }
+  });
+});
+
+app.put('/api/static-pages/:id', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Update static page endpoint ready',
+    data: { message: 'Static page update system will be implemented', id: req.params.id }
+  });
+});
+
+app.delete('/api/static-pages/:id', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Delete static page endpoint ready',
+    data: { message: 'Static page deletion system will be implemented', id: req.params.id }
+  });
+});
+
 // Error handling middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   console.error(err.stack);
