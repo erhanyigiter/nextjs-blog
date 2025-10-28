@@ -94,6 +94,64 @@ app.post('/api/posts', (req, res) => {
   });
 });
 
+// Category routes (simplified)
+app.get('/api/categories', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Categories endpoint ready',
+    data: { message: 'Category management system will be implemented' }
+  });
+});
+
+app.get('/api/categories/:slug', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Category detail endpoint ready',
+    data: { message: 'Category detail system will be implemented', slug: req.params.slug }
+  });
+});
+
+app.post('/api/categories', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Create category endpoint ready',
+    data: { message: 'Category creation system will be implemented' }
+  });
+});
+
+// Tag routes (simplified)
+app.get('/api/tags', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Tags endpoint ready',
+    data: { message: 'Tag management system will be implemented' }
+  });
+});
+
+app.get('/api/tags/popular', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Popular tags endpoint ready',
+    data: { message: 'Popular tags system will be implemented' }
+  });
+});
+
+app.get('/api/tags/:slug', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Tag detail endpoint ready',
+    data: { message: 'Tag detail system will be implemented', slug: req.params.slug }
+  });
+});
+
+app.post('/api/tags', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Create tag endpoint ready',
+    data: { message: 'Tag creation system will be implemented' }
+  });
+});
+
 // Error handling middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   console.error(err.stack);
