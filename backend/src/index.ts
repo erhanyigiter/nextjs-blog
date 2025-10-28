@@ -69,12 +69,36 @@ app.post('/api/auth/login', (req, res) => {
   });
 });
 
-// Post routes (simplified)
+// Post Management routes (simplified)
 app.get('/api/posts', (req, res) => {
   res.json({
     success: true,
     message: 'Posts endpoint ready',
     data: { message: 'Post management system will be implemented' }
+  });
+});
+
+app.get('/api/posts/popular', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Popular posts endpoint ready',
+    data: { message: 'Popular posts system will be implemented' }
+  });
+});
+
+app.get('/api/posts/recent', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Recent posts endpoint ready',
+    data: { message: 'Recent posts system will be implemented' }
+  });
+});
+
+app.get('/api/posts/author/:username', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Author posts endpoint ready',
+    data: { message: 'Author posts system will be implemented', username: req.params.username }
   });
 });
 
@@ -91,6 +115,22 @@ app.post('/api/posts', (req, res) => {
     success: true,
     message: 'Create post endpoint ready',
     data: { message: 'Post creation system will be implemented' }
+  });
+});
+
+app.put('/api/posts/:id', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Update post endpoint ready',
+    data: { message: 'Post update system will be implemented', id: req.params.id }
+  });
+});
+
+app.delete('/api/posts/:id', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Delete post endpoint ready',
+    data: { message: 'Post deletion system will be implemented', id: req.params.id }
   });
 });
 
