@@ -12,7 +12,7 @@ export function Layout({ children }: LayoutProps) {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container-mobile md:container-tablet lg:container-desktop">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <div className="flex items-center space-x-2">
@@ -31,10 +31,14 @@ export function Layout({ children }: LayoutProps) {
               <Link href="/categories" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 Kategoriler
               </Link>
+              <Link href="/tags" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                Etiketler
+              </Link>
               <Link href="/about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 Hakkımızda
               </Link>
             </nav>
+
             
             {/* Mobile Menu Button */}
             <Button variant="ghost" size="sm" className="md:hidden">
@@ -53,7 +57,7 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Footer */}
       <footer className="border-t bg-muted/50">
-        <div className="container-mobile md:container-tablet lg:container-desktop py-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Brand */}
             <div className="space-y-4">

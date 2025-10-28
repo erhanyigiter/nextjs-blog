@@ -7,13 +7,13 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export default function HomePage() {
   return (
-    <div className="container-mobile md:container-tablet lg:container-desktop py-8">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Hero Section */}
       <section className="text-center py-12 md:py-16">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
           Modern Blog Platformu
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
           Next.js 15 ve Turbo ile güçlendirilmiş, hızlı ve SEO dostu blog deneyimi. 
           Çok dilli destek ve modern tasarım.
         </p>
@@ -36,7 +36,7 @@ export default function HomePage() {
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
           Öne Çıkan Yazılar
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {/* Post Card 1 */}
           <Card className="blog-card group cursor-pointer">
             <div className="aspect-video bg-muted rounded-t-lg"></div>

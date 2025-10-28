@@ -12,7 +12,7 @@ const mockPosts = [
     slug: 'nextjs-15-modern-web-development',
     title: 'Next.js 15 ile Modern Web Geliştirme',
     excerpt: 'Next.js 15\'in yeni özelliklerini keşfedin ve modern web uygulamaları geliştirin. App Router, Server Components ve daha fazlası.',
-    featuredImage: '/placeholder-blog-1.jpg',
+    featuredImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=450&fit=crop&crop=center',
     publishedAt: '2024-01-15T10:00:00Z',
     viewCount: 1250,
     likeCount: 45,
@@ -22,7 +22,7 @@ const mockPosts = [
       username: 'erhanyigiter',
       firstName: 'Erhan',
       lastName: 'Yığiter',
-      avatar: '/placeholder-avatar.jpg'
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
     },
     category: {
       id: '1',
@@ -42,7 +42,7 @@ const mockPosts = [
     slug: 'mobile-first-design-principles',
     title: 'Mobile-First Tasarım Prensipleri',
     excerpt: 'Mobil öncelikli tasarım yaklaşımı ile kullanıcı deneyimini nasıl iyileştirirsiniz? Responsive design ve modern UI/UX.',
-    featuredImage: '/placeholder-blog-2.jpg',
+    featuredImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop&crop=center',
     publishedAt: '2024-01-12T14:30:00Z',
     viewCount: 890,
     likeCount: 32,
@@ -52,7 +52,7 @@ const mockPosts = [
       username: 'erhanyigiter',
       firstName: 'Erhan',
       lastName: 'Yığiter',
-      avatar: '/placeholder-avatar.jpg'
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
     },
     category: {
       id: '2',
@@ -71,7 +71,7 @@ const mockPosts = [
     slug: 'seo-optimization-guide',
     title: 'SEO Optimizasyonu Rehberi',
     excerpt: 'Blog yazılarınızı arama motorlarında üst sıralara çıkarmanın yolları. Meta tags, structured data ve daha fazlası.',
-    featuredImage: '/placeholder-blog-3.jpg',
+    featuredImage: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&h=450&fit=crop&crop=center',
     publishedAt: '2024-01-10T09:15:00Z',
     viewCount: 2100,
     likeCount: 78,
@@ -81,7 +81,7 @@ const mockPosts = [
       username: 'erhanyigiter',
       firstName: 'Erhan',
       lastName: 'Yığiter',
-      avatar: '/placeholder-avatar.jpg'
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
     },
     category: {
       id: '3',
@@ -100,7 +100,7 @@ const mockPosts = [
     slug: 'tailwind-css-best-practices',
     title: 'Tailwind CSS En İyi Uygulamaları',
     excerpt: 'Tailwind CSS ile daha verimli ve sürdürülebilir CSS yazma teknikleri. Component-based design ve utility-first yaklaşım.',
-    featuredImage: '/placeholder-blog-4.jpg',
+    featuredImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=450&fit=crop&crop=center',
     publishedAt: '2024-01-08T16:45:00Z',
     viewCount: 1560,
     likeCount: 56,
@@ -110,7 +110,7 @@ const mockPosts = [
       username: 'erhanyigiter',
       firstName: 'Erhan',
       lastName: 'Yığiter',
-      avatar: '/placeholder-avatar.jpg'
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
     },
     category: {
       id: '1',
@@ -129,7 +129,7 @@ const mockPosts = [
     slug: 'typescript-advanced-patterns',
     title: 'TypeScript Gelişmiş Desenler',
     excerpt: 'TypeScript ile daha güvenli ve ölçeklenebilir kod yazma teknikleri. Generics, utility types ve advanced patterns.',
-    featuredImage: '/placeholder-blog-5.jpg',
+    featuredImage: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=450&fit=crop&crop=center',
     publishedAt: '2024-01-05T11:20:00Z',
     viewCount: 980,
     likeCount: 41,
@@ -139,7 +139,7 @@ const mockPosts = [
       username: 'erhanyigiter',
       firstName: 'Erhan',
       lastName: 'Yığiter',
-      avatar: '/placeholder-avatar.jpg'
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
     },
     category: {
       id: '1',
@@ -158,7 +158,7 @@ const mockPosts = [
     slug: 'performance-optimization-tips',
     title: 'Web Performans Optimizasyonu İpuçları',
     excerpt: 'Web sitenizin hızını artırmanın yolları. Bundle optimization, lazy loading, caching ve daha fazlası.',
-    featuredImage: '/placeholder-blog-6.jpg',
+    featuredImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop&crop=center',
     publishedAt: '2024-01-03T13:10:00Z',
     viewCount: 1340,
     likeCount: 63,
@@ -168,7 +168,7 @@ const mockPosts = [
       username: 'erhanyigiter',
       firstName: 'Erhan',
       lastName: 'Yığiter',
-      avatar: '/placeholder-avatar.jpg'
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
     },
     category: {
       id: '4',
@@ -209,13 +209,13 @@ const mockTags = [
 
 export default function BlogListPage() {
   return (
-    <div className="container-mobile md:container-tablet lg:container-desktop py-8">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
           Blog Yazıları
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
           Teknoloji, tasarım ve geliştirme konularında güncel yazılarımızı keşfedin.
         </p>
       </div>
@@ -276,7 +276,7 @@ export default function BlogListPage() {
       {/* Featured Post */}
       <div className="mb-12">
         <h2 className="text-2xl font-bold text-foreground mb-6">Öne Çıkan Yazı</h2>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <BlogCard post={mockPosts[0]} variant="featured" />
         </div>
       </div>
@@ -290,7 +290,7 @@ export default function BlogListPage() {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {mockPosts.slice(1).map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}

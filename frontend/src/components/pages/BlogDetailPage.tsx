@@ -187,7 +187,7 @@ export default function BlogDetailPage() {
   };
 
   return (
-    <div className="container-mobile md:container-tablet lg:container-desktop py-8">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Breadcrumb */}
       <nav className="flex items-center space-x-2 text-sm text-muted-foreground mb-8">
         <Link href="/" className="hover:text-foreground transition-colors">Ana Sayfa</Link>

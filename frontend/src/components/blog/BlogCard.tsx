@@ -73,8 +73,11 @@ export function BlogCard({ post, variant = 'default' }: BlogCardProps) {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                    <span className="text-2xl">📝</span>
+                  <div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-4xl mb-2">📝</div>
+                      <div className="text-xs text-muted-foreground font-medium">Blog Yazısı</div>
+                    </div>
                   </div>
                 )}
               </div>
@@ -109,23 +112,26 @@ export function BlogCard({ post, variant = 'default' }: BlogCardProps) {
   if (variant === 'featured') {
     return (
       <Link href={`/blog/${post.slug}`} className="group">
-        <Card className="blog-card h-full">
-          <div className="aspect-video bg-muted rounded-t-lg overflow-hidden">
+        <Card className="blog-card h-full overflow-hidden">
+          <div className="aspect-[16/9] bg-muted rounded-t-lg overflow-hidden">
             {post.featuredImage ? (
               <Image
                 src={post.featuredImage}
                 alt={post.title}
-                width={400}
-                height={225}
+                width={800}
+                height={450}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                <span className="text-6xl">📝</span>
+              <div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl mb-3">📝</div>
+                  <div className="text-sm text-muted-foreground font-medium">Blog Yazısı</div>
+                </div>
               </div>
             )}
           </div>
-          <CardHeader>
+          <CardHeader className="pb-4">
             <div className="flex items-center gap-2 mb-3">
               {post.category && (
                 <Badge 
@@ -139,27 +145,28 @@ export function BlogCard({ post, variant = 'default' }: BlogCardProps) {
                 {formatDate(post.publishedAt)}
               </span>
             </div>
-            <CardTitle className="text-xl group-hover:text-primary transition-colors line-clamp-2">
+            <CardTitle className="text-2xl group-hover:text-primary transition-colors line-clamp-2 mb-3">
               {post.title}
             </CardTitle>
-            <CardDescription className="line-clamp-3">
+            <CardDescription className="text-base line-clamp-3">
               {post.excerpt}
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="flex items-center justify-between">
+          <CardContent className="pt-0">
+            <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-3">
-                <Avatar className="h-8 w-8">
+                <Avatar className="h-10 w-10">
                   <AvatarImage src={post.author.avatar} />
                   <AvatarFallback>
                     {post.author.firstName?.[0]}{post.author.lastName?.[0]}
                   </AvatarFallback>
                 </Avatar>
-                <div className="text-sm">
-                  <p className="font-medium">{post.author.firstName} {post.author.lastName}</p>
+                <div>
+                  <p className="font-semibold">{post.author.firstName} {post.author.lastName}</p>
+                  <p className="text-sm text-muted-foreground">Full-stack developer ve teknoloji tutkunu. Modern web teknolojileri ile ilgili yazılar yazıyor.</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 text-xs text-muted-foreground">
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1">
                   👁️ {formatViewCount(post.viewCount)}
                 </span>
@@ -172,7 +179,7 @@ export function BlogCard({ post, variant = 'default' }: BlogCardProps) {
               </div>
             </div>
             {post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-1 mt-3">
+              <div className="flex flex-wrap gap-2">
                 {post.tags.slice(0, 3).map((tag) => (
                   <Badge key={tag.id} variant="outline" className="text-xs">
                     {tag.name}
@@ -205,8 +212,11 @@ export function BlogCard({ post, variant = 'default' }: BlogCardProps) {
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-              <span className="text-4xl">📝</span>
+            <div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center">
+              <div className="text-center">
+                <div className="text-4xl mb-2">📝</div>
+                <div className="text-xs text-muted-foreground font-medium">Blog Yazısı</div>
+              </div>
             </div>
           )}
         </div>

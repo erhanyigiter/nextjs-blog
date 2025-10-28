@@ -196,15 +196,15 @@
 @layer utilities {
   /* Mobile-first responsive utilities */
   .container-mobile {
-    @apply px-4 mx-auto max-w-sm;
+    @apply px-4 mx-auto max-w-full;
   }
   
   .container-tablet {
-    @apply px-6 mx-auto max-w-2xl;
+    @apply px-6 mx-auto max-w-4xl;
   }
   
   .container-desktop {
-    @apply px-8 mx-auto max-w-6xl;
+    @apply px-8 mx-auto max-w-7xl;
   }
   
   /* Typography utilities */
