@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -17,12 +18,16 @@ export default function HomePage() {
           Çok dilli destek ve modern tasarım.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="blog-button-primary">
-            Blog Yazılarını Keşfet
-          </Button>
-          <Button size="lg" variant="outline" className="blog-button-secondary">
-            Hakkımızda
-          </Button>
+          <Link href="/blog">
+            <Button size="lg" className="blog-button-primary">
+              Blog Yazılarını Keşfet
+            </Button>
+          </Link>
+          <Link href="/about">
+            <Button size="lg" variant="outline" className="blog-button-secondary">
+              Hakkımızda
+            </Button>
+          </Link>
         </div>
       </section>
 

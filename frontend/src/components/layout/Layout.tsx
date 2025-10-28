@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
@@ -21,18 +22,18 @@ export function Layout({ children }: LayoutProps) {
             
             {/* Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
-              <a href="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 Ana Sayfa
-              </a>
-              <a href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              </Link>
+              <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 Blog
-              </a>
-              <a href="/categories" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              </Link>
+              <Link href="/categories" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 Kategoriler
-              </a>
-              <a href="/about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              </Link>
+              <Link href="/about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 Hakkımızda
-              </a>
+              </Link>
             </nav>
             
             {/* Mobile Menu Button */}
