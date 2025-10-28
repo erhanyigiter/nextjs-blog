@@ -61,21 +61,40 @@ export default function AdminLoginPage() {
     setLoading(true);
     
     try {
-      // Mock API call - gerçek uygulamada admin API'ye istek gönderilecek
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Admin credentials validation
+      const validAdmins = [
+        { email: 'admin@nextblog.com', password: 'admin123', name: 'Admin User' },
+        { email: 'erhan@nextblog.com', password: 'erhan123', name: 'Erhan Yığiter' },
+        { email: 'superadmin@nextblog.com', password: 'super123', name: 'Super Admin' }
+      ];
       
-      // Simulate successful admin login
-      console.log('Admin login attempt:', formData);
+      // Check if credentials match any valid admin
+      const admin = validAdmins.find(
+        admin => admin.email === formData.email && admin.password === formData.password
+      );
       
-      // Create mock JWT token (header.payload.signature format)
+      if (!admin) {
+        setErrors({ general: 'Geçersiz e-posta veya şifre. Lütfen bilgilerinizi kontrol edin.' });
+        setLoading(false);
+        return;
+      }
+      
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      console.log('Admin login successful:', { email: admin.email, name: admin.name });
+      
+      // Create JWT token (header.payload.signature format)
       const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));
       const payload = btoa(JSON.stringify({
-        sub: 'admin',
-        email: formData.email,
+        sub: admin.email,
+        email: admin.email,
+        name: admin.name,
         role: 'admin',
+        iat: Math.floor(Date.now() / 1000),
         exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60) // 24 hours
       }));
-      const signature = 'mock-signature';
+      const signature = 'admin-signature-' + Date.now();
       
       const token = `${header}.${payload}.${signature}`;
       localStorage.setItem('adminToken', token);
@@ -190,10 +209,20 @@ export default function AdminLoginPage() {
         {/* Demo credentials */}
         <Card className="mt-6 bg-muted/50">
           <CardContent className="p-4">
-            <h3 className="font-semibold mb-2">Demo Giriş Bilgileri</h3>
-            <div className="text-sm space-y-1">
-              <p><strong>E-posta:</strong> admin@nextblog.com</p>
-              <p><strong>Şifre:</strong> admin123</p>
+            <h3 className="font-semibold mb-2">Geçerli Admin Hesapları</h3>
+            <div className="text-sm space-y-2">
+              <div className="border-l-2 border-primary pl-3">
+                <p><strong>Admin:</strong> admin@nextblog.com</p>
+                <p><strong>Şifre:</strong> admin123</p>
+              </div>
+              <div className="border-l-2 border-green-500 pl-3">
+                <p><strong>Erhan:</strong> erhan@nextblog.com</p>
+                <p><strong>Şifre:</strong> erhan123</p>
+              </div>
+              <div className="border-l-2 border-purple-500 pl-3">
+                <p><strong>Super Admin:</strong> superadmin@nextblog.com</p>
+                <p><strong>Şifre:</strong> super123</p>
+              </div>
             </div>
           </CardContent>
         </Card>

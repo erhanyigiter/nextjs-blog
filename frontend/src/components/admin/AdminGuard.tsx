@@ -33,7 +33,30 @@ export function AdminGuard({ children }: AdminGuardProps) {
         const tokenData = JSON.parse(atob(tokenParts[1]));
         const now = Date.now() / 1000;
         
+        // Check token expiration
         if (tokenData.exp < now) {
+          localStorage.removeItem('adminToken');
+          setIsLoading(false);
+          router.push('/admin/login');
+          return;
+        }
+        
+        // Check if user has admin role
+        if (tokenData.role !== 'admin') {
+          localStorage.removeItem('adminToken');
+          setIsLoading(false);
+          router.push('/admin/login');
+          return;
+        }
+        
+        // Check if email is in valid admin list
+        const validAdminEmails = [
+          'admin@nextblog.com',
+          'erhan@nextblog.com', 
+          'superadmin@nextblog.com'
+        ];
+        
+        if (!validAdminEmails.includes(tokenData.email)) {
           localStorage.removeItem('adminToken');
           setIsLoading(false);
           router.push('/admin/login');
