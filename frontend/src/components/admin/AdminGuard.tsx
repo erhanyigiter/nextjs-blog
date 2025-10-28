@@ -18,29 +18,37 @@ export function AdminGuard({ children }: AdminGuardProps) {
       const adminToken = localStorage.getItem('adminToken');
       
       if (!adminToken) {
+        setIsLoading(false);
         router.push('/admin/login');
         return;
       }
       
       // Token geçerliliğini kontrol et (mock)
       try {
-        const tokenData = JSON.parse(atob(adminToken.split('.')[1]));
+        const tokenParts = adminToken.split('.');
+        if (tokenParts.length !== 3) {
+          throw new Error('Invalid token format');
+        }
+        
+        const tokenData = JSON.parse(atob(tokenParts[1]));
         const now = Date.now() / 1000;
         
         if (tokenData.exp < now) {
           localStorage.removeItem('adminToken');
+          setIsLoading(false);
           router.push('/admin/login');
           return;
         }
         
         setIsAuthenticated(true);
+        setIsLoading(false);
       } catch (error) {
+        console.error('Token validation error:', error);
         localStorage.removeItem('adminToken');
+        setIsLoading(false);
         router.push('/admin/login');
         return;
       }
-      
-      setIsLoading(false);
     };
 
     checkAuth();

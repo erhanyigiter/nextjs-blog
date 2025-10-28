@@ -67,15 +67,17 @@ export default function AdminLoginPage() {
       // Simulate successful admin login
       console.log('Admin login attempt:', formData);
       
-      // Create mock JWT token
-      const mockToken = {
+      // Create mock JWT token (header.payload.signature format)
+      const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));
+      const payload = btoa(JSON.stringify({
         sub: 'admin',
         email: formData.email,
         role: 'admin',
         exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60) // 24 hours
-      };
+      }));
+      const signature = 'mock-signature';
       
-      const token = btoa(JSON.stringify(mockToken));
+      const token = `${header}.${payload}.${signature}`;
       localStorage.setItem('adminToken', token);
       
       // Redirect to admin dashboard
