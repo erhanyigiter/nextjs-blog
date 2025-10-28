@@ -209,6 +209,79 @@ app.delete('/api/static-pages/:id', (req, res) => {
   });
 });
 
+// Language Management routes (simplified)
+app.get('/api/languages', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Languages endpoint ready',
+    data: { message: 'Language management system will be implemented' }
+  });
+});
+
+app.get('/api/languages/default', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Default language endpoint ready',
+    data: { message: 'Default language system will be implemented' }
+  });
+});
+
+app.get('/api/languages/:code', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Language detail endpoint ready',
+    data: { message: 'Language detail system will be implemented', code: req.params.code }
+  });
+});
+
+app.get('/api/languages/admin/stats', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Language stats endpoint ready',
+    data: { message: 'Language statistics system will be implemented' }
+  });
+});
+
+app.post('/api/languages', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Create language endpoint ready',
+    data: { message: 'Language creation system will be implemented' }
+  });
+});
+
+app.put('/api/languages/:id', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Update language endpoint ready',
+    data: { message: 'Language update system will be implemented', id: req.params.id }
+  });
+});
+
+app.delete('/api/languages/:id', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Delete language endpoint ready',
+    data: { message: 'Language deletion system will be implemented', id: req.params.id }
+  });
+});
+
+app.put('/api/languages/:id/set-default', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Set default language endpoint ready',
+    data: { message: 'Set default language system will be implemented', id: req.params.id }
+  });
+});
+
+app.put('/api/languages/:id/toggle-status', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Toggle language status endpoint ready',
+    data: { message: 'Toggle language status system will be implemented', id: req.params.id }
+  });
+});
+
 // Error handling middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   console.error(err.stack);
