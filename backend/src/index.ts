@@ -282,6 +282,71 @@ app.put('/api/languages/:id/toggle-status', (req, res) => {
   });
 });
 
+// Comment routes (simplified)
+app.get('/api/comments/post/:postSlug', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Post comments endpoint ready',
+    data: { message: 'Post comments system will be implemented', postSlug: req.params.postSlug }
+  });
+});
+
+app.get('/api/comments/:id', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Comment detail endpoint ready',
+    data: { message: 'Comment detail system will be implemented', id: req.params.id }
+  });
+});
+
+app.get('/api/comments/admin/pending', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Pending comments endpoint ready',
+    data: { message: 'Pending comments system will be implemented' }
+  });
+});
+
+app.post('/api/comments/post/:postSlug', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Create comment endpoint ready',
+    data: { message: 'Comment creation system will be implemented', postSlug: req.params.postSlug }
+  });
+});
+
+app.put('/api/comments/:id', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Update comment endpoint ready',
+    data: { message: 'Comment update system will be implemented', id: req.params.id }
+  });
+});
+
+app.delete('/api/comments/:id', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Delete comment endpoint ready',
+    data: { message: 'Comment deletion system will be implemented', id: req.params.id }
+  });
+});
+
+app.put('/api/comments/:id/approve', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Approve comment endpoint ready',
+    data: { message: 'Comment approval system will be implemented', id: req.params.id }
+  });
+});
+
+app.put('/api/comments/:id/reject', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Reject comment endpoint ready',
+    data: { message: 'Comment rejection system will be implemented', id: req.params.id }
+  });
+});
+
 // Error handling middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   console.error(err.stack);
